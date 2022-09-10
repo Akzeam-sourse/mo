@@ -1,4 +1,4 @@
-
+ك
 START_MSG = """
 - اهلا بك يا <b>{}</b> .
 - انا بوت المارد الازرق .
@@ -19,7 +19,7 @@ ME_MSG = """
 <b>Total Questions :</b> <code>{}</code>
 """
 
-GITHUB_URL = "https://t.me/JJ_DDF"
+GITHUB_URL = "https://t.me/VVVVVGGD"
 DEV_URL = "https://t.me/E_M_1"
 
 AKI_LANG_CODE = {
