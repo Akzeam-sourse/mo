@@ -53,7 +53,7 @@ def aki_play_cmd_handler(update: Update, context: CallbackContext) -> None:
     user_id = update.effective_user.id
     msg = update.message.reply_photo(
         photo=open('aki_pics/aki_01.png', 'rb'),
-        caption="Loading..."
+        caption="‹ جار التحميل ›"
     )
     updateTotalGuess(user_id, total_guess=1)
     q = aki.start_game(language=getLanguage(user_id), child_mode=getChildMode(user_id))
@@ -100,7 +100,7 @@ def aki_play_callback_handler(update: Update, context:CallbackContext) -> None:
             aki['absolute_picture_path'] = open('aki_pics/none.jpg', 'rb')
         query.message.edit_media(
             InputMediaPhoto(media=aki['absolute_picture_path'],
-            caption=f"It's {aki['name']} ({aki['description']})! Was I correct?"
+            caption=f"‹ اضن انك تفكر ب : {aki['name']} ({aki['description']})! هل كان اختياري صحيح ›"
             ),
             reply_markup=AKI_WIN_BUTTON
         )
@@ -115,7 +115,7 @@ def aki_win(update: Update, context: CallbackContext):
         query.message.edit_media(
             InputMediaPhoto(
                 media=open('aki_pics/aki_win.png', 'rb'),
-                caption="gg!"
+                caption="‹ لقد ربحت مرى اخرى ›"
             ),
             reply_markup=None
         )
@@ -124,7 +124,7 @@ def aki_win(update: Update, context: CallbackContext):
         query.message.edit_media(
             InputMediaPhoto(
                 media=open('aki_pics/aki_defeat.png', 'rb'),
-                caption="bruh :("
+                caption="هف اعدك سانتصر المره القادمه"
             ),
             reply_markup=None
         )
@@ -145,7 +145,7 @@ def aki_me(update: Update, context: CallbackContext) -> None:
                                                      user["user_name"], 
                                                      user["user_id"],
                                                      AKI_LANG_CODE[user["aki_lang"]],
-                                                     "Enabled" if getChildMode(user_id) else "Disabled",
+                                                     "مفعل" if getChildMode(user_id) else "معطل",
                                                      getTotalGuess(user_id),
                                                      getCorrectGuess(user_id),
                                                      getWrongGuess(user_id),
@@ -157,10 +157,10 @@ def aki_me(update: Update, context: CallbackContext) -> None:
 
 def aki_set_lang(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    lang_code = query.data.split('_')[-1]
+    lang_code = query.data.split('_')[-1] 
     user_id = update.effective_user.id
     updateLanguage(user_id, lang_code)
-    query.edit_message_text(f"Language Successfully changed to {AKI_LANG_CODE[lang_code]} !")
+    query.edit_message_text(f"‹ تم تغير الغه الى :  {AKI_LANG_CODE[lang_code]} .")
 
 
 def aki_lang(update: Update, context: CallbackContext) -> None:
@@ -172,7 +172,7 @@ def aki_lang(update: Update, context: CallbackContext) -> None:
 
 def aki_childmode(update: Update, context: CallbackContext) -> None:
     user_id = update.effective_user.id
-    status = "enabled" if getChildMode(user_id) else "disabled"
+    status = "مفعل" if getChildMode(user_id) else "معطل"
     update.message.reply_text(
         text=CHILDMODE_MSG.format(status),
         parse_mode=ParseMode.HTML,
@@ -185,7 +185,7 @@ def aki_set_child_mode(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     to_set = int(query.data.split('_')[-1])
     updateChildMode(user_id, to_set)
-    query.edit_message_text(f"Child mode is {'enabled' if to_set else 'disabled'} Successfully!")
+    query.edit_message_text(f"‹ وضع الاطفال الان{'enabled' if to_set else 'disabled'} بنجاح ›")
 
 
 def del_data(context:CallbackContext, user_id: int):
@@ -195,7 +195,7 @@ def del_data(context:CallbackContext, user_id: int):
 
 def aki_lead(update: Update, _:CallbackContext) -> None:
     update.message.reply_text(
-        text="Check Leaderboard on specific categories in Akinator.",
+        text="‹ ادخل الى قوائم التوب للتفاصيل ›",
         reply_markup=AKI_LEADERBOARD_KEYBOARD
     )
 
@@ -242,13 +242,13 @@ def aki_lead_cb_handler(update: Update, context:CallbackContext) -> None:
 def main():
     updater = Updater(token=BOT_TOKEN)
     dp = updater.dispatcher
-    dp.add_handler(CommandHandler('start', aki_start, run_async=True))
+    dp.add_handler(CommandHandler('s', aki_start, run_async=True))
     dp.add_handler(CommandHandler('find', aki_find, run_async=True))
     dp.add_handler(CommandHandler('me', aki_me, run_async=True))
     dp.add_handler(CommandHandler('play', aki_play_cmd_handler, run_async=True))
-    dp.add_handler(CommandHandler('language', aki_lang, run_async=True))
-    dp.add_handler(CommandHandler('childmode', aki_childmode, run_async=True))
-    dp.add_handler(CommandHandler('leaderboard', aki_lead, run_async=True))
+    dp.add_handler(CommandHandler('lang', aki_lang, run_async=True))
+    dp.add_handler(CommandHandler('child', aki_childmode, run_async=True))
+    dp.add_handler(CommandHandler('top', aki_lead, run_async=True))
 
     dp.add_handler(CallbackQueryHandler(aki_set_lang, pattern=r"aki_set_lang_", run_async=True))
     dp.add_handler(CallbackQueryHandler(aki_set_child_mode, pattern=r"c_mode_", run_async=True))
