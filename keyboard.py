@@ -4,8 +4,8 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 START_KEYBOARD = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton('- قناه السورس .', GITHUB_URL),
-            InlineKeyboardButton('- المطور .', DEV_URL)   
+            InlineKeyboardButton('‹ قناة البوت ›', GITHUB_URL),
+            InlineKeyboardButton('‹ مبرمج البوت ›', DEV_URL)   
         ]
     ]
 )
@@ -55,15 +55,15 @@ CHILDMODE_BUTTON = InlineKeyboardMarkup(
 AKI_PLAY_KEYBOARD = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("- نعم .", callback_data='aki_play_0'),
-            InlineKeyboardButton("- لا .", callback_data='aki_play_1'),
-            InlineKeyboardButton("- من المحتمل .", callback_data='aki_play_3')
+            InlineKeyboardButton("‹ نعم ›", callback_data='aki_play_0'),
+            InlineKeyboardButton("‹ لا ›", callback_data='aki_play_1'),
+            InlineKeyboardButton("‹ من المحتمل ›", callback_data='aki_play_3')
         ],
         [
             InlineKeyboardButton("- لا اعلم .", callback_data='aki_play_2'),
-            InlineKeyboardButton("- علي الاغلب لا .", callback_data='aki_play_4')
+            InlineKeyboardButton("‹على الاغلب لا ›", callback_data='aki_play_4')
         ],
-        [   InlineKeyboardButton("- العوده .", callback_data= 'aki_play_5')
+        [   InlineKeyboardButton("‹ عوده الى السؤال السابق ›", callback_data= 'aki_play_5')
         ]
     ]
 )
@@ -71,8 +71,8 @@ AKI_PLAY_KEYBOARD = InlineKeyboardMarkup(
 AKI_WIN_BUTTON = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("- نعم .", callback_data='aki_win_y'),
-            InlineKeyboardButton("- لا .", callback_data='aki_win_n'),
+            InlineKeyboardButton("‹ نعم ›", callback_data='aki_win_y'),
+            InlineKeyboardButton("‹ لا ›", callback_data='aki_win_n'),
         ]
     ]
 )
@@ -81,12 +81,12 @@ AKI_WIN_BUTTON = InlineKeyboardMarkup(
 AKI_LEADERBOARD_KEYBOARD = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Total Guesses", callback_data='aki_lead_tguess'),
-            InlineKeyboardButton("Correct Guesses", callback_data='aki_lead_cguess'),
+            InlineKeyboardButton("‹ اجمالي التخمينات ›", callback_data='aki_lead_tguess'),
+            InlineKeyboardButton("‹ التخمينات الصحيحه ›", callback_data='aki_lead_cguess'),
         ],
         [
-            InlineKeyboardButton("Wrong Guesses", callback_data='aki_lead_wguess'),
-            InlineKeyboardButton("Total Questions", callback_data='aki_lead_tquestions'),
+            InlineKeyboardButton("‹ التخمينات الغير صحيحه ›", callback_data='aki_lead_wguess'),
+            InlineKeyboardButton("‹ مجموع الأسئلة ›", callback_data='aki_lead_tquestions'),
         ]
     ]
 )
