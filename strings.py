@@ -48,8 +48,8 @@ Change Playing Language.
 """
 
 CHILDMODE_MSG = """
-If Child mode is enabled, akinator won't show any NSFW content.
-<b>Current Status :</b> <pre>Child mode is {} !</pre>
+‹ ملاحضه : اذا فعلت وضع الطفل مراح اطلعلك اسئله +18 ›
+<b>الحالة الحالية :</b> <pre>وضع الطفل هو {} !</pre>
 """
 
-AKI_FIRST_QUESTION = "This is the first question. You can't go back any further!"
+AKI_FIRST_QUESTION = "‹ يغبي هاذا اول سؤال يعني متكدر تعيد بعد لان هاذا الاول ›"
