@@ -124,7 +124,7 @@ def aki_win(update: Update, context: CallbackContext):
         query.message.edit_media(
             InputMediaPhoto(
                 media=open('aki_pics/aki_defeat.png', 'rb'),
-                caption="هف اعدك سانتصر المره القادمه"
+                caption="‹ انت فرت هلمره المره الجايه حفور عليك ›"
             ),
             reply_markup=None
         )
